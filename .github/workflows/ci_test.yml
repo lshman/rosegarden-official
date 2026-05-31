@@ -34,6 +34,7 @@ jobs:
            sudo apt-get install -y libjack-dev
            sudo apt-get install -y liblo-dev
            sudo apt-get install -y liblrdf0-dev
+           sudo apt-get install -y qtbase5-dev
            sudo apt-get install -y libqt5widgets5t64
 
     - name: Configure CMake
