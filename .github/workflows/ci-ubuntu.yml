@@ -1,5 +1,5 @@
 
-name: CI Ubuntu new
+name: ci-ubuntu
 
 on:
   push:
