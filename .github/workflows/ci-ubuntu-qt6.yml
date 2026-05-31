@@ -30,7 +30,7 @@ jobs:
            sudo apt-get install -y liblo-dev
            sudo apt-get install -y liblrdf0-dev
            sudo apt-get install -y qt6-base-dev
-           sudo apt-get install -y qttools6-dev
+           sudo apt-get install -y qt6-tools-dev
            sudo apt-get install -y xvfb
 
     - name: Configure CMake
