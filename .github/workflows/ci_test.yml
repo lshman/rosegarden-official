@@ -23,6 +23,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Dependencies
+      run: |
+           sudo apt-get update
+           sudo apt-get install -y libsamplerate-dev
+           sudo apt-get install -y libfftw3-dev
+           sudo apt-get install -y alsa-base
+           sudo apt-get install -y dssi-dev
+           sudo apt-get install -y ladspa-sdk
+           sudo apt-get install -y libjack-dev
+           sudo apt-get install -y liblo-dev
+           sudo apt-get install -y liblrdf0-dev
+           sudo apt-get install -y libqt5widgets
+
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
