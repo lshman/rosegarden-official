@@ -1,0 +1,44 @@
+
+name: ci-ubuntu-qt6
+
+on:
+  push:
+    branches: [ "ci_test" ]
+  pull_request:
+    branches: [ "ci_test" ]
+
+env:
+  BUILD_TYPE: Debug
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Dependencies
+      run: |
+           sudo apt-get update
+           sudo apt-get install -y libsamplerate-dev
+           sudo apt-get install -y libfftw3-dev
+           sudo apt-get install -y alsa-base
+           sudo apt-get install -y dssi-dev
+           sudo apt-get install -y ladspa-sdk
+           sudo apt-get install -y libjack-dev
+           sudo apt-get install -y liblo-dev
+           sudo apt-get install -y liblrdf0-dev
+           sudo apt-get install -y qtbase6-dev
+           sudo apt-get install -y qttools6-dev
+           sudo apt-get install -y xvfb
+
+    - name: Configure CMake
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DUSE_QT6
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      run: xvfb-run ctest --output-on-failure -C ${{env.BUILD_TYPE}}
