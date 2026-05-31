@@ -35,7 +35,7 @@ jobs:
            sudo apt-get install -y liblo-dev
            sudo apt-get install -y liblrdf0-dev
            sudo apt-get install -y qtbase5-dev
-           sudo apt-get install -y qttools5-dev-tools
+           sudo apt-get install -y qttools5-dev
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
